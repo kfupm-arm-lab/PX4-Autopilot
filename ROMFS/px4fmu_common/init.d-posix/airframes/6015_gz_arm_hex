@@ -19,27 +19,27 @@ param set-default CA_ROTOR_COUNT 6
 
 param set-default CA_ROTOR0_PX 0.0
 param set-default CA_ROTOR0_PY 0.34
-param set-default CA_ROTOR0_KM  -0.05
+param set-default CA_ROTOR0_KM  -0.0135
 
 param set-default CA_ROTOR1_PX 0.0
 param set-default CA_ROTOR1_PY -0.34
-param set-default CA_ROTOR1_KM  0.05
+param set-default CA_ROTOR1_KM  0.0135
 
 param set-default CA_ROTOR2_PX 0.3
 param set-default CA_ROTOR2_PY -0.17
-param set-default CA_ROTOR2_KM -0.05
+param set-default CA_ROTOR2_KM -0.0135
 
 param set-default CA_ROTOR3_PX -0.3
 param set-default CA_ROTOR3_PY 0.17
-param set-default CA_ROTOR3_KM 0.05
+param set-default CA_ROTOR3_KM 0.0135
 
 param set-default CA_ROTOR4_PX 0.3
 param set-default CA_ROTOR4_PY 0.17
-param set-default CA_ROTOR4_KM 0.05
+param set-default CA_ROTOR4_KM 0.0135
 
 param set-default CA_ROTOR5_PX -0.3
 param set-default CA_ROTOR5_PY -0.17
-param set-default CA_ROTOR5_KM -0.05
+param set-default CA_ROTOR5_KM -0.0135
 
 param set-default SIM_GZ_EN 1
 
@@ -64,5 +64,23 @@ param set-default SIM_GZ_EC_MAX4 1000
 param set-default SIM_GZ_EC_MAX5 1000
 param set-default SIM_GZ_EC_MAX6 1000
 
+param set-default CA_METHOD 0
+
 param set-default COM_RCL_EXCEPT 7
 param set-default COM_RC_IN_MODE 1
+
+param set-default MC_PITCHRATE_D 0.0
+param set-default MC_PITCHRATE_I 0.0
+param set-default MC_ROLLRATE_D 0.0
+param set-default MC_ROLLRATE_I 0.0
+param set-default MC_YAWRATE_D 0.0
+param set-default MC_YAWRATE_I 0.0
+
+param set-default MC_PR_INT_LIM 0.0
+param set-default MC_RR_INT_LIM 0.0
+param set-default MC_YR_INT_LIM 0.0
+
+param set-default MC_YAWRATE_P 0.1
+param set-default MC_YAW_P 2
+
+param set-default THR_MDL_FAC 1.0
