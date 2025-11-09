@@ -586,6 +586,32 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 			int total_num_actuators = config.num_actuators_matrix[i];
 			_control_allocation[i]->setEffectivenessMatrix(config.effectiveness_matrices[i], config.trim[i],
 					config.linearization_point[i], total_num_actuators, reason == EffectivenessUpdateReason::CONFIGURATION_UPDATE);
+
+			// Print the control allocation matrix for debugging
+			if (reason == EffectivenessUpdateReason::CONFIGURATION_UPDATE) {
+				PX4_INFO("=== Control Allocation Matrix [%d] ===", i);
+				PX4_INFO("Matrix dimensions: %d axes x %d actuators", NUM_AXES, total_num_actuators);
+				PX4_INFO("Axes: [Roll, Pitch, Yaw, Thrust_X, Thrust_Y, Thrust_Z]");
+
+				for (int row = 0; row < NUM_AXES; row++) {
+					// Build the row string
+					char row_str[256];
+					int pos = 0;
+					pos += snprintf(row_str + pos, sizeof(row_str) - pos, "Axis %d: [", row);
+
+					for (int col = 0; col < total_num_actuators; col++) {
+						if (col > 0) {
+							pos += snprintf(row_str + pos, sizeof(row_str) - pos, ", ");
+						}
+						pos += snprintf(row_str + pos, sizeof(row_str) - pos, "%8.4f",
+							(double)config.effectiveness_matrices[i](row, col));
+					}
+					pos += snprintf(row_str + pos, sizeof(row_str) - pos, "]");
+
+					PX4_INFO("%s", row_str);
+				}
+				PX4_INFO("===================================");
+			}
 		}
 
 		trims.timestamp = hrt_absolute_time();

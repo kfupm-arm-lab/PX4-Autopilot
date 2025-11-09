@@ -19,7 +19,7 @@ param set-default CA_ROTOR_COUNT 6
 
 param set-default CA_ROTOR0_PX 0.0
 param set-default CA_ROTOR0_PY 0.34
-param set-default CA_ROTOR0_KM  -0.05
+param set-default CA_ROTOR0_KM  -0.0135
 param set-default CA_ROTOR0_AX -0.731350463179516
 param set-default CA_ROTOR0_AY 0.0
 param set-default CA_ROTOR0_AZ -0.682001832842032
@@ -27,35 +27,35 @@ param set-default CA_ROTOR0_AZ -0.682001832842032
 
 param set-default CA_ROTOR1_PX 0.0
 param set-default CA_ROTOR1_PY -0.34
-param set-default CA_ROTOR1_KM  0.05
+param set-default CA_ROTOR1_KM  0.0135
 param set-default CA_ROTOR1_AX -0.731350463179516
 param set-default CA_ROTOR1_AY 0.0
 param set-default CA_ROTOR1_AZ -0.682001832842032
 
-param set-default CA_ROTOR2_PX 0.3
+param set-default CA_ROTOR2_PX 0.2944
 param set-default CA_ROTOR2_PY -0.17
-param set-default CA_ROTOR2_KM -0.05
+param set-default CA_ROTOR2_KM -0.0135
 param set-default CA_ROTOR2_AX 0.365676007088906
 param set-default CA_ROTOR2_AY 0.633367632453399
 param set-default CA_ROTOR2_AZ -0.682001832842032
 
-param set-default CA_ROTOR3_PX -0.3
+param set-default CA_ROTOR3_PX -0.2944
 param set-default CA_ROTOR3_PY 0.17
-param set-default CA_ROTOR3_KM 0.05
+param set-default CA_ROTOR3_KM 0.0135
 param set-default CA_ROTOR3_AX 0.365676007088906
 param set-default CA_ROTOR3_AY 0.633367632453399
 param set-default CA_ROTOR3_AZ -0.682001832842032
 
-param set-default CA_ROTOR4_PX 0.3
+param set-default CA_ROTOR4_PX 0.2944
 param set-default CA_ROTOR4_PY 0.17
-param set-default CA_ROTOR4_KM 0.05
+param set-default CA_ROTOR4_KM 0.0135
 param set-default CA_ROTOR4_AX 0.365676007088906
 param set-default CA_ROTOR4_AY -0.633367632453399
 param set-default CA_ROTOR4_AZ -0.682001832842032
 
-param set-default CA_ROTOR5_PX -0.3
+param set-default CA_ROTOR5_PX -0.2944
 param set-default CA_ROTOR5_PY -0.17
-param set-default CA_ROTOR5_KM -0.05
+param set-default CA_ROTOR5_KM -0.0135
 param set-default CA_ROTOR5_AX 0.365676007088906
 param set-default CA_ROTOR5_AY -0.633367632453399
 param set-default CA_ROTOR5_AZ -0.682001832842032
@@ -87,6 +87,19 @@ param set-default CA_METHOD 0
 
 param set-default COM_RCL_EXCEPT 7
 param set-default COM_RC_IN_MODE 1
+
+param set-default MC_PITCHRATE_D 0.0
+param set-default MC_PITCHRATE_I 0.0
+param set-default MC_ROLLRATE_D 0.0
+param set-default MC_ROLLRATE_I 0.0
+param set-default MC_YAWRATE_D 0.0
+param set-default MC_YAWRATE_I 0.0
+
+param set-default MC_PR_INT_LIM 0.0
+param set-default MC_RR_INT_LIM 0.0
+param set-default MC_YR_INT_LIM 0.0
+
+
 param set-default MC_YAWRATE_P 0.1
 param set-default MC_YAW_P 2
 

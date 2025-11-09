@@ -40,6 +40,7 @@
  */
 
 #include "ControlAllocationPseudoInverse.hpp"
+#include <px4_platform_common/log.h>
 
 void
 ControlAllocationPseudoInverse::setEffectivenessMatrix(
@@ -64,6 +65,27 @@ ControlAllocationPseudoInverse::updatePseudoInverse()
 	if (_mix_update_needed) {
 		matrix::geninv(_effectiveness, _mix);
 
+		// Print the mixing matrix for debugging
+		PX4_INFO("=== Mixing Matrix (Pseudo-Inverse) ===");
+
+		for (int row = 0; row < _num_actuators; row++) {
+			// Build the row string
+			char row_str[256];
+			int pos = 0;
+			pos += snprintf(row_str + pos, sizeof(row_str) - pos, "Actuator %d: [", row);
+
+			for (int col = 0; col < NUM_AXES; col++) {
+				if (col > 0) {
+					pos += snprintf(row_str + pos, sizeof(row_str) - pos, ", ");
+				}
+				pos += snprintf(row_str + pos, sizeof(row_str) - pos, "%8.4f",
+					(double)_mix(row, col));
+			}
+			pos += snprintf(row_str + pos, sizeof(row_str) - pos, "]");
+
+			PX4_INFO_RAW("%s\n", row_str);
+		}
+		PX4_INFO("=====================================");
 		if (!_metric_allocation) {
 			if (_normalization_needs_update && !_had_actuator_failure) {
 				updateControlAllocationMatrixScale();
@@ -71,6 +93,28 @@ ControlAllocationPseudoInverse::updatePseudoInverse()
 			}
 
 			normalizeControlAllocationMatrix();
+
+			// Print the final normalized mixing matrix used for control allocation
+			PX4_INFO("=== Final Normalized Mixing Matrix ===");
+
+			for (int row = 0; row < _num_actuators; row++) {
+				// Build the row string
+				char row_str[256];
+				int pos = 0;
+				pos += snprintf(row_str + pos, sizeof(row_str) - pos, "Actuator %d: [", row);
+
+				for (int col = 0; col < NUM_AXES; col++) {
+					if (col > 0) {
+						pos += snprintf(row_str + pos, sizeof(row_str) - pos, ", ");
+					}
+					pos += snprintf(row_str + pos, sizeof(row_str) - pos, "%8.4f",
+						(double)_mix(row, col));
+				}
+				pos += snprintf(row_str + pos, sizeof(row_str) - pos, "]");
+
+				PX4_INFO_RAW("%s\n", row_str);
+			}
+			PX4_INFO("=====================================");
 		}
 
 		_mix_update_needed = false;
