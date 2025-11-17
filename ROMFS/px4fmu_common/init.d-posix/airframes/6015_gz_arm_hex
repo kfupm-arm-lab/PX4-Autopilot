@@ -12,7 +12,7 @@ PX4_GZ_WORLD=${PX4_GZ_WORLD:=default}
 PX4_SIM_MODEL=${PX4_SIM_MODEL:=arm_hex}
 
 param set-default MAV_TYPE 13
-param set-default MIS_TAKEOFF_ALT 1.0
+param set-default MIS_TAKEOFF_ALT 3.0
 
 param set-default CA_AIRFRAME 0
 param set-default CA_ROTOR_COUNT 6
@@ -64,10 +64,15 @@ param set-default SIM_GZ_EC_MAX4 1000
 param set-default SIM_GZ_EC_MAX5 1000
 param set-default SIM_GZ_EC_MAX6 1000
 
-param set-default CA_METHOD 0
+param set-default CA_METHOD 2
 
 param set-default COM_RCL_EXCEPT 7
 param set-default COM_RC_IN_MODE 1
+
+param set-default THR_MDL_FAC 1.0
+param set-default HTE_THR_RANGE 0.4
+param set-default MPC_THR_HOVER 0.2
+param set-default MPC_THR_MIN 0.05
 
 param set-default MC_PITCHRATE_D 0.0
 param set-default MC_PITCHRATE_I 0.0
@@ -83,4 +88,3 @@ param set-default MC_YR_INT_LIM 0.0
 param set-default MC_YAWRATE_P 0.1
 param set-default MC_YAW_P 2
 
-param set-default THR_MDL_FAC 1.0
