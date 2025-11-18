@@ -20,26 +20,33 @@ param set-default CA_ROTOR_COUNT 6
 param set-default CA_ROTOR0_PX 0.0
 param set-default CA_ROTOR0_PY 0.34
 param set-default CA_ROTOR0_KM  -0.0135
+param set-default CA_ROTOR0_CT  1.0
 
 param set-default CA_ROTOR1_PX 0.0
 param set-default CA_ROTOR1_PY -0.34
 param set-default CA_ROTOR1_KM  0.0135
+param set-default CA_ROTOR1_CT  1.0
+
 
 param set-default CA_ROTOR2_PX 0.3
 param set-default CA_ROTOR2_PY -0.17
 param set-default CA_ROTOR2_KM -0.0135
+param set-default CA_ROTOR2_CT  1.0
 
 param set-default CA_ROTOR3_PX -0.3
 param set-default CA_ROTOR3_PY 0.17
 param set-default CA_ROTOR3_KM 0.0135
+param set-default CA_ROTOR3_CT  1.0
 
 param set-default CA_ROTOR4_PX 0.3
 param set-default CA_ROTOR4_PY 0.17
 param set-default CA_ROTOR4_KM 0.0135
+param set-default CA_ROTOR4_CT  1.0
 
 param set-default CA_ROTOR5_PX -0.3
 param set-default CA_ROTOR5_PY -0.17
 param set-default CA_ROTOR5_KM -0.0135
+param set-default CA_ROTOR5_CT  1.0
 
 param set-default SIM_GZ_EN 1
 
@@ -64,14 +71,14 @@ param set-default SIM_GZ_EC_MAX4 1000
 param set-default SIM_GZ_EC_MAX5 1000
 param set-default SIM_GZ_EC_MAX6 1000
 
-param set-default CA_METHOD 2
+param set-default CA_METHOD 0
 
 param set-default COM_RCL_EXCEPT 7
 param set-default COM_RC_IN_MODE 1
 
 param set-default THR_MDL_FAC 1.0
 param set-default HTE_THR_RANGE 0.4
-param set-default MPC_THR_HOVER 0.2
+param set-default MPC_THR_HOVER 0.6
 param set-default MPC_THR_MIN 0.05
 
 param set-default MC_PITCHRATE_D 0.0

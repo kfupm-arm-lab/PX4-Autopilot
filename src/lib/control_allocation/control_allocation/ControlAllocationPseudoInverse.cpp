@@ -228,6 +228,21 @@ ControlAllocationPseudoInverse::allocate()
 
 	_prev_actuator_sp = _actuator_sp;
 
+	// // Print actuator trim values
+	// PX4_INFO("=== Actuator Trim Values ===");
+	// char trim_str[512];
+	// int pos = 0;
+	// pos += snprintf(trim_str + pos, sizeof(trim_str) - pos, "[");
+	// for (int i = 0; i < _num_actuators; i++) {
+	// 	if (i > 0) {
+	// 		pos += snprintf(trim_str + pos, sizeof(trim_str) - pos, ", ");
+	// 	}
+	// 	pos += snprintf(trim_str + pos, sizeof(trim_str) - pos, "%8.4f", (double)_actuator_trim(i));
+	// }
+	// pos += snprintf(trim_str + pos, sizeof(trim_str) - pos, "]");
+	// PX4_INFO_RAW("%s\n", trim_str);
+	// PX4_INFO("============================");
+
 	// Allocate
 	_actuator_sp = _actuator_trim + _mix * (_control_sp - _control_trim);
 }

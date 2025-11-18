@@ -410,6 +410,11 @@ ControlAllocator::Run()
 		c[0](4) = _thrust_sp(1);
 		c[0](5) = _thrust_sp(2);
 
+		// Debug print before mixer
+		//PX4_INFO("Pre-Mixer - Torque: [%.4f, %.4f, %.4f] Thrust: [%.4f, %.4f, %.4f]",
+		//         (double)c[0](0), (double)c[0](1), (double)c[0](2),
+		//         (double)c[0](3), (double)c[0](4), (double)c[0](5));
+
 		if (_num_control_allocation > 1) {
 			if (_vehicle_torque_setpoint1_sub.copy(&vehicle_torque_setpoint)) {
 				c[1](0) = vehicle_torque_setpoint.xyz[0];
@@ -440,6 +445,23 @@ ControlAllocator::Run()
 
 			_control_allocation[i]->clipActuatorSetpoint();
 		}
+
+		// Debug print computed rotor thrusts after allocation
+		// for (int i = 0; i < _num_control_allocation; ++i) {
+		// 	const matrix::Vector<float, NUM_ACTUATORS> &actuator_sp = _control_allocation[i]->getActuatorSetpoint();
+		// 	char output[256];
+		// 	int pos = 0;
+		// 	pos += snprintf(output + pos, sizeof(output) - pos, "Post-Allocation[%d] Actuators: [", i);
+
+		// 	for (int j = 0; j < _num_actuators[0] && j < 16; ++j) {  // Print up to 16 motors
+		// 		if (j > 0) {
+		// 			pos += snprintf(output + pos, sizeof(output) - pos, ", ");
+		// 		}
+		// 		pos += snprintf(output + pos, sizeof(output) - pos, "%.4f", (double)actuator_sp(j));
+		// 	}
+		// 	pos += snprintf(output + pos, sizeof(output) - pos, "]");
+		// 	PX4_INFO("%s", output);
+		// }
 	}
 
 	// Publish actuator setpoint and allocator status
@@ -578,7 +600,8 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 				}
 
 				if (all_entries_small) {
-					matrix.row(n) = 0.f;
+					//matrix.row(n) = 0.f;
+					// Removed by Ramy Rashad to avoid misuse of control allocation
 				}
 			}
 
@@ -592,7 +615,6 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 				PX4_INFO("=== Control Allocation Matrix [%d] ===", i);
 				PX4_INFO("Matrix dimensions: %d axes x %d actuators", NUM_AXES, total_num_actuators);
 				PX4_INFO("Axes: [Roll, Pitch, Yaw, Thrust_X, Thrust_Y, Thrust_Z]");
-
 				for (int row = 0; row < NUM_AXES; row++) {
 					// Build the row string
 					char row_str[256];
