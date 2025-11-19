@@ -178,10 +178,12 @@ ControlAllocationPseudoInverse::updateControlAllocationMatrixScale()
 	for (int axis_idx = 2; axis_idx >= 0; --axis_idx) {
 		int num_non_zero_thrust = 0;
 		float norm_sum = 0.f;
+		float max_val = 0.f;
 
 		for (int i = 0; i < _num_actuators; i++) {
 			float norm = fabsf(_mix(i, 3 + axis_idx));
 			norm_sum += norm;
+			max_val = fmaxf(max_val, norm);
 
 			if (norm > FLT_EPSILON) {
 				++num_non_zero_thrust;
@@ -189,7 +191,8 @@ ControlAllocationPseudoInverse::updateControlAllocationMatrixScale()
 		}
 
 		if (num_non_zero_thrust > 0) {
-			_control_allocation_scale(3 + axis_idx) = norm_sum / num_non_zero_thrust;
+			//_control_allocation_scale(3 + axis_idx) = norm_sum / num_non_zero_thrust;
+			_control_allocation_scale(3 + axis_idx) = max_val;
 
 		} else {
 			_control_allocation_scale(3 + axis_idx) = _control_allocation_scale(THRUST_Z);
