@@ -57,12 +57,12 @@ param set-default SIM_GZ_EC_FUNC4 104
 param set-default SIM_GZ_EC_FUNC5 105
 param set-default SIM_GZ_EC_FUNC6 106
 
-param set-default SIM_GZ_EC_MIN1 100
-param set-default SIM_GZ_EC_MIN2 100
-param set-default SIM_GZ_EC_MIN3 100
-param set-default SIM_GZ_EC_MIN4 100
-param set-default SIM_GZ_EC_MIN5 100
-param set-default SIM_GZ_EC_MIN6 100
+param set-default SIM_GZ_EC_MIN1 1
+param set-default SIM_GZ_EC_MIN2 1
+param set-default SIM_GZ_EC_MIN3 1
+param set-default SIM_GZ_EC_MIN4 1
+param set-default SIM_GZ_EC_MIN5 1
+param set-default SIM_GZ_EC_MIN6 1
 
 param set-default SIM_GZ_EC_MAX1 1000
 param set-default SIM_GZ_EC_MAX2 1000

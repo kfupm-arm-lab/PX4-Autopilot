@@ -144,17 +144,23 @@ ControlAllocationPseudoInverse::updateControlAllocationMatrixScale()
 		float roll_norm_scale = 1.f;
 
 		if (num_non_zero_roll_torque > 0) {
-			roll_norm_scale = sqrtf(_mix.col(0).norm_squared() / (num_non_zero_roll_torque / 2.f));
+			// roll_norm_scale = sqrtf(_mix.col(0).norm_squared() / (num_non_zero_roll_torque / 2.f));
+			//roll_norm_scale = sqrtf(_mix.col(0).norm_squared());
+			roll_norm_scale = _mix.col(0).max();
 		}
 
 		float pitch_norm_scale = 1.f;
 
 		if (num_non_zero_pitch_torque > 0) {
-			pitch_norm_scale = sqrtf(_mix.col(1).norm_squared() / (num_non_zero_pitch_torque / 2.f));
+			//pitch_norm_scale = sqrtf(_mix.col(1).norm_squared() / (num_non_zero_pitch_torque / 2.f));
+			//pitch_norm_scale = sqrtf(_mix.col(1).norm_squared());
+			pitch_norm_scale = _mix.col(1).max();
 		}
 
-		_control_allocation_scale(0) = fmaxf(roll_norm_scale, pitch_norm_scale);
-		_control_allocation_scale(1) = _control_allocation_scale(0);
+		//_control_allocation_scale(0) = fmaxf(roll_norm_scale, pitch_norm_scale);
+		//_control_allocation_scale(1) = _control_allocation_scale(0);
+		_control_allocation_scale(0) = roll_norm_scale;
+		_control_allocation_scale(1) = pitch_norm_scale;
 
 		// Scale yaw separately
 		_control_allocation_scale(2) = _mix.col(2).max();
@@ -194,6 +200,15 @@ ControlAllocationPseudoInverse::updateControlAllocationMatrixScale()
 void
 ControlAllocationPseudoInverse::normalizeControlAllocationMatrix()
 {
+	// Print control allocation scale factors in one line
+	PX4_INFO("Scale factors: [%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+		 (double)_control_allocation_scale(0),
+		 (double)_control_allocation_scale(1),
+		 (double)_control_allocation_scale(2),
+		 (double)_control_allocation_scale(3),
+		 (double)_control_allocation_scale(4),
+		 (double)_control_allocation_scale(5));
+
 	if (_control_allocation_scale(0) > FLT_EPSILON) {
 		_mix.col(0) /= _control_allocation_scale(0);
 		_mix.col(1) /= _control_allocation_scale(1);
@@ -242,6 +257,22 @@ ControlAllocationPseudoInverse::allocate()
 	// pos += snprintf(trim_str + pos, sizeof(trim_str) - pos, "]");
 	// PX4_INFO_RAW("%s\n", trim_str);
 	// PX4_INFO("============================");
+
+	// Print CONTROL Trim values
+	// PX4_INFO("=== Control Trim Values ===");
+	// char control_trim_str[512];
+	// int pos = 0;
+	// pos += snprintf(control_trim_str + pos, sizeof(control_trim_str) - pos,
+	// 		"[%.4f, %.4f, %.4f, %.4f, %.4f, %.4f]",
+	// 		(double)_control_trim(0),
+	// 		(double)_control_trim(1),
+	// 		(double)_control_trim(2),
+	// 		(double)_control_trim(3),
+	// 		(double)_control_trim(4),
+	// 		(double)_control_trim(5));
+	// PX4_INFO_RAW("%s\n", control_trim_str);
+	// PX4_INFO("===========================");
+
 
 	// Allocate
 	_actuator_sp = _actuator_trim + _mix * (_control_sp - _control_trim);

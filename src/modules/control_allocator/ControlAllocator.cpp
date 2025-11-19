@@ -411,7 +411,7 @@ ControlAllocator::Run()
 		c[0](5) = _thrust_sp(2);
 
 		// Debug print before mixer
-		//PX4_INFO("Pre-Mixer - Torque: [%.4f, %.4f, %.4f] Thrust: [%.4f, %.4f, %.4f]",
+		// PX4_INFO("Pre-Mixer - Torque: [%.4f, %.4f, %.4f] Thrust: [%.4f, %.4f, %.4f]",
 		//         (double)c[0](0), (double)c[0](1), (double)c[0](2),
 		//         (double)c[0](3), (double)c[0](4), (double)c[0](5));
 
