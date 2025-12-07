@@ -97,6 +97,7 @@ px4_add_romfs_files(
 	6011_gazebo-classic_typhoon_h480.post
 	6015_gz_arm_hex
 	6016_gz_arm_mark1
+	6017_gz_arm_markG1
 	
 	8011_gz_omnicopter
 
