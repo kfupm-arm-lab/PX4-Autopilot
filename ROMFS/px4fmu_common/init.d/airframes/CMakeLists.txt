@@ -79,6 +79,7 @@ if(CONFIG_MODULES_MC_RATE_CONTROL)
 		# [6000, 6999] Hexarotor x
 		6001_hexa_x
 		6002_draco_r
+		6500_gz_arm_hex
 
 		# [7000, 7999] Hexarotor +
 		7001_hexa_+
@@ -101,6 +102,8 @@ if(CONFIG_MODULES_MC_RATE_CONTROL)
 		16001_helicopter
 
 		24001_dodeca_cox
+
+		
 	)
 endif()
 
