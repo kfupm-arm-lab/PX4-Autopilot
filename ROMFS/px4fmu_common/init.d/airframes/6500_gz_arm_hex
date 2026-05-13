@@ -47,7 +47,7 @@ param set CA_ROTOR5_CT 1.0
 param set CA_METHOD 0
 
 param set COM_RCL_EXCEPT 7
-param set COM_RC_IN_MODE 1
+param set COM_RC_IN_MODE 0
 
 param set THR_MDL_FAC 1.0
 param set HTE_THR_RANGE 0.4
