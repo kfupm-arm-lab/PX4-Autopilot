@@ -93,6 +93,7 @@ param set-default CA_METHOD 0
 
 param set-default COM_RCL_EXCEPT 7
 param set-default COM_RC_IN_MODE 1
+param set-default COM_OF_LOSS_T 5.0
 
 param set-default THR_MDL_FAC 1.0
 param set-default HTE_THR_RANGE 0.4

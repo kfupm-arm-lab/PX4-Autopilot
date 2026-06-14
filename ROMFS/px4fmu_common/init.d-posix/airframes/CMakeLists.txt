@@ -98,6 +98,7 @@ px4_add_romfs_files(
 	6015_gz_arm_hex
 	6016_gz_arm_mark1
 	6017_gz_arm_markG1
+	6018_gz_arm_markP
 	
 	8011_gz_omnicopter
 

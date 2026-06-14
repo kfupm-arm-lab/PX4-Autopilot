@@ -9,7 +9,7 @@
 
 PX4_SIMULATOR=${PX4_SIMULATOR:=gz}
 PX4_GZ_WORLD=${PX4_GZ_WORLD:=default}
-PX4_SIM_MODEL=${PX4_SIM_MODEL:=arm_markG1}
+PX4_SIM_MODEL=${PX4_SIM_MODEL:=arm_markP}
 
 param set-default MAV_TYPE 13
 param set-default MIS_TAKEOFF_ALT 1.0
