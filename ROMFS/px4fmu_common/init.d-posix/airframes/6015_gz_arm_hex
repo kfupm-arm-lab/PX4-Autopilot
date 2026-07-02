@@ -48,6 +48,7 @@ param set-default CA_ROTOR5_PY -0.17
 param set-default CA_ROTOR5_KM -0.00828498
 param set-default CA_ROTOR5_CT  1.0
 
+param set-default UXRCE_DDS_SYNCT 0
 param set-default SIM_GZ_EN 1
 
 param set-default SIM_GZ_EC_FUNC1 101
